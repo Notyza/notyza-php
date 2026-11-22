@@ -1,0 +1,33 @@
+{
+  "name": "notyza/notyza-php",
+  "description": "Cliente oficial da API do Notyza: NFS-e, NF-e, NFC-e e MDF-e, e webhooks assinados.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "files": [
+      "src/Notyza.php"
+    ]
+  },
+  "scripts": {
+    "test": "php tests/run.php"
+  },
+  "homepage": "https://notyza.com.br/docs",
+  "support": {
+    "issues": "https://github.com/notyza/notyza-php/issues",
+    "source": "https://github.com/notyza/notyza-php",
+    "docs": "https://notyza.com.br/docs"
+  },
+  "keywords": [
+    "nfse",
+    "nfe",
+    "nfce",
+    "mdfe",
+    "nota fiscal",
+    "notyza"
+  ]
+}
