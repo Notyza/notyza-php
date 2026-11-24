@@ -145,6 +145,40 @@ final class Notyza
         return $this->request('POST', '/v1/mdfe/' . self::id($id) . '/close', $body);
     }
 
+    /** CT-e: the document of each road freight of a carrier in the Simples. 200 authorized, 202 still open, 422 refused. */
+    /** @param array<string,mixed> $cte */
+    public function issueCte(array $cte): array
+    {
+        return $this->request('POST', '/v1/cte', $cte, [422]);
+    }
+
+    /** A carta de correção: [['group' => ..., 'field' => ..., 'value' => ...]]; never values, parties or dates. */
+    /** @param list<array<string,mixed>> $corrections */
+    public function correctCte(string $id, array $corrections, ?string $issuer = null): array
+    {
+        return $this->request('POST', '/v1/cte/' . self::id($id) . '/correction', array_filter(['issuer' => $issuer, 'corrections' => $corrections], static fn ($value) => $value !== null));
+    }
+
+    /** The CT-e of complement: the value that was missing of an authorized freight. */
+    /** @param array<string,mixed> $body */
+    public function complementCte(string $id, array $body): array
+    {
+        return $this->request('POST', '/v1/cte/' . self::id($id) . '/complement', $body, [422]);
+    }
+
+    /** The substitute CT-e: the same freight with what was wrong fixed (after the tomador's disagreement). */
+    /** @param array<string,mixed> $body */
+    public function substituteCte(string $id, array $body): array
+    {
+        return $this->request('POST', '/v1/cte/' . self::id($id) . '/substitute', $body, [422]);
+    }
+
+    /** The tomador's side: the service of a CT-e it paid for (of another carrier) was not as agreed. */
+    public function cteDisagreement(string $key, string $reason, ?string $issuer = null): array
+    {
+        return $this->request('POST', '/v1/cte/disagreement', array_filter(['issuer' => $issuer, 'key' => $key, 'reason' => $reason], static fn ($value) => $value !== null));
+    }
+
     /** @param array<string,mixed> $body */
     public function createIssuer(array $body): array
     {
