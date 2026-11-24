@@ -5,14 +5,11 @@ conferência dos webhooks assinados. PHP 8.1+, só ext-curl e ext-json.
 
 ## Instalar
 
-Enquanto o pacote não está no Packagist, aponte o Composer para este repositório:
-
-```json
-{
-  "repositories": [{ "type": "vcs", "url": "https://github.com/notyza/notyza-php" }],
-  "require": { "notyza/notyza-php": "^0.1" }
-}
+```bash
+composer require notyza/notyza-php
 ```
+
+[![Packagist](https://img.shields.io/packagist/v/notyza/notyza-php)](https://packagist.org/packages/notyza/notyza-php)
 
 ## Emitir
 

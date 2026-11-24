@@ -29,5 +29,11 @@
     "mdfe",
     "nota fiscal",
     "notyza"
+  ],
+  "authors": [
+    {
+      "name": "Notyza",
+      "homepage": "https://notyza.com.br"
+    }
   ]
 }
